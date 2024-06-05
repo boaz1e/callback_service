@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <h1>Welcome to Media Supreme</h1>
-        <form action="leads.php" method="POST" id="leadForm">
+        <form id="leadForm">
             <input type="hidden" name="add_lead" value="1">
             <label for="first_name">First Name:</label>
             <input type="text" id="first_name" name="first_name" required>

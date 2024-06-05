@@ -1,14 +1,32 @@
 <?php
 require_once 'includes/config.php';
+require_once 'includes/functions.php';
+
+
+// Enable error reporting for debugging
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $data = json_decode(file_get_contents('php://input'), true); // Decode JSON input
+    $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
+
+    if ($contentType === "application/json") {
+        // Read JSON input
+        $data = json_decode(file_get_contents("php://input"), true);
+    } else {
+        // Read form input
+        $data = $_POST;
+    }
+
+    error_log("POST data: " . json_encode($data)); // Log the POST data for debugging
 
     if (isset($data['add_lead'])) {
         addLeadHandler($data);
     } elseif (isset($data['mark_called'])) {
         markLeadAsCalledHandler($data);
     }
+    exit; // Ensure the script ends here
 } elseif ($_SERVER['REQUEST_METHOD'] == 'GET') {
     if (isset($_GET['lead_id'])) {
         showLeadDetailsHandler();
@@ -23,26 +41,35 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 
-// Function to handle adding a lead
-function addLeadHandler($data) {
-    global $conn;
-    $firstName = $data['first_name'];
-    $lastName = $data['last_name'];
-    $email = $data['email'];
-    $phoneNumber = $data['phone_number'];
-    $ip = $_SERVER['REMOTE_ADDR'];
-    $country = "Unknown"; // Could be fetched via an API
-    $url = $_SERVER['REQUEST_URI'];
-    $note = $data['note'];
-    $sub1 = $_GET['sub_1'] ?? '';
 
-    if (isEmailRegistered($conn, $email)) {
-        echo json_encode(['status' => 'email_exists']);
-    } else {
-        $success = addLead($conn, $firstName, $lastName, $email, $phoneNumber, $ip, $country, $url, $note, $sub1);
-        echo json_encode(['status' => $success ? 'success' : 'error', 'name' => $firstName . ' ' . $lastName]);
-    }
+
+function addLeadHandler($data) {
+  global $conn;
+  $firstName = $data['first_name'];
+  $lastName = $data['last_name'];
+  $email = $data['email'];
+  $phoneNumber = $data['phone_number'];
+  $ipInfo = getIPInfo();
+  $ip = $ipInfo['ip'] ?? 'Unknown';
+  $country = $ipInfo['country_name'] ?? 'Unknown';
+  $url = $_SERVER['REQUEST_URI'];
+  $note = $data['note'];
+  $sub1 = $_GET['sub_1'] ?? '';
+
+  if (isEmailRegistered($conn, $email)) {
+      $response = json_encode(['status' => 'email_exists']);
+      error_log("Response: " . $response); // Log the response
+      echo $response;
+  } else {
+      $success = addLead($conn, $firstName, $lastName, $email, $phoneNumber, $ip, $country, $url, $note, $sub1);
+      $response = json_encode(['status' => $success ? 'success' : 'error', 'name' => $firstName . ' ' . $lastName]);
+      error_log("Response: " . $response); // Log the response
+      echo $response;
+  }
+  exit; // Ensure the script ends here
 }
+
+
 
 // Function to handle showing lead details by ID
 function showLeadDetailsHandler() {
@@ -89,4 +116,4 @@ function showLeadsByCountryHandler() {
 
 // Include the existing functions from functions.php
 require_once 'includes/functions.php';
-?>
+

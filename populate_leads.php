@@ -25,4 +25,3 @@ foreach ($users as $user) {
 }
 
 echo "Database populated with fake leads!";
-?>

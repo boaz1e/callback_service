@@ -32,4 +32,4 @@ if (!isset($_SESSION['loggedin'])) {
 }
 
 include BASE_PATH . 'views/footer.php';
-?>
+
