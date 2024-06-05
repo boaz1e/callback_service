@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Media Supreme Landing Page</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     <div class="container">
@@ -31,6 +31,8 @@
             </div>
         </div>
     </div>
-    <script src="js/script.js"></script>
+    <script src="../js/script.js"></script>
 </body>
 </html>
+
+

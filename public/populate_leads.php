@@ -1,5 +1,9 @@
 <?php
-require_once 'includes/config.php';
+require_once '../includes/config.php';
+require_once '../includes/db.php';
+require_once '../models/Lead.php';
+
+$leadModel = new Lead($conn);
 
 $curl = curl_init();
 curl_setopt($curl, CURLOPT_URL, "https://jsonplaceholder.typicode.com/users");
@@ -21,7 +25,8 @@ foreach ($users as $user) {
     $note = 'Fake user';
     $sub1 = 'fake_sub1';
 
-    addLead($conn, $firstName, $lastName, $email, $phoneNumber, $ip, $country, $url, $note, $sub1);
+    $leadModel->addLead($firstName, $lastName, $email, $phoneNumber, $ip, $country, $url, $note, $sub1);
 }
 
 echo "Database populated with fake leads!";
+?>
