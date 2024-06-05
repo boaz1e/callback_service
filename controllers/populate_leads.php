@@ -1,5 +1,6 @@
 <?php
-require_once 'includes/config.php';
+require_once __DIR__ . '/../includes/config.php';
+require_once __DIR__ . '/../models/lead_model.php'; // Include lead_model.php for addLead function
 
 $curl = curl_init();
 curl_setopt($curl, CURLOPT_URL, "https://jsonplaceholder.typicode.com/users");

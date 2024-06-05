@@ -7,16 +7,16 @@ document.addEventListener("DOMContentLoaded", function () {
       event.preventDefault();
       console.log("Form submitted");
 
-      // Fetch form data
       const formData = new FormData(event.target);
 
-      fetch("leads.php", {
+      fetch("controllers/leads.php", {
+        // Update this line
         method: "POST",
         body: formData,
       })
-        .then((response) => response.text()) // Use text() instead of json() for initial debugging
+        .then((response) => response.text())
         .then((text) => {
-          console.log("Raw response:", text); // Log the raw response (for debugging)
+          console.log("Raw response:", text);
           let data;
           try {
             data = JSON.parse(text);

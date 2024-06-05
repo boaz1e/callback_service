@@ -12,18 +12,18 @@ This project is a landing page for a media company called "Media Supreme". The l
 
 2. **Set up the database:**
 
-   1. **Start XAMPP:**
+   **Start XAMPP:**
 
    - Open XAMPP Control Panel.
    - Start the `Apache` and `MySQL` services.
 
-3. **Create the Database:**
+   **Create the Database:**
 
 - Open your web browser and navigate to `http://localhost/phpmyadmin`.
 - In phpMyAdmin, click on the `Databases` tab.
 - In the `Create database` field, enter `leads_db` and click the `Create` button.
 
-3. **Create the `leads` Table:**
+  **Create the `leads` Table:**
 
 - Click on the `leads_db` database you just created.
 - Click on the `SQL` tab.
@@ -107,7 +107,7 @@ This project is a landing page for a media company called "Media Supreme". The l
    Open your browser and navigate to:
 
    ```
-   http://localhost/media_supreme_website/backoffice.php
+   http://localhost/media_supreme_website/controllers/backoffice.php
    ```
 
    - Login with username: `admin` and password: `password`.
@@ -116,7 +116,7 @@ This project is a landing page for a media company called "Media Supreme". The l
 
 ### Add Lead to the Database
 
-- **URL:** `http://localhost/media_supreme_website/leads.php`
+- **URL:** `http://localhost/media_supreme_website/controllers/leads.php`
 - **Method:** `POST`
 - **Body:** (raw JSON)
 
@@ -133,12 +133,12 @@ This project is a landing page for a media company called "Media Supreme". The l
 
 ### Show Lead Details by ID
 
-- **URL:** `http://localhost/media_supreme_website/leads.php?lead_id=1`
+- **URL:** `http://localhost/media_supreme_website/controllers/leads.php?lead_id=1`
 - **Method:** `GET`
 
 ### Edit Lead by ID to Mark as "Called"
 
-- **URL:** `http://localhost/media_supreme_website/leads.php`
+- **URL:** `http://localhost/media_supreme_website/controllers/leads.php`
 - **Method:** `POST`
 - **Body:** (raw JSON)
 
@@ -151,18 +151,17 @@ This project is a landing page for a media company called "Media Supreme". The l
 
 ### Show All Leads that are "Called"
 
-- **URL:** `http://localhost/media_supreme_website/leads.php?filter=called`
+- **URL:** `http://localhost/media_supreme_website/controllers/leads.php?filter=called`
 - **Method:** `GET`
 
 ### Show Leads Created Today
 
-- **URL:** `http://localhost/media_supreme_website/leads.php?filter=today`
+- **URL:** `http://localhost/media_supreme_website/controllers/leads.php?filter=today`
 - **Method:** `GET`
 
 ### Show Leads by Country
 
-- **URL:** `http://localhost/media_supreme_website/leads.php?country=USA`
+- **URL:** `http://localhost/media_supreme_website/controllers/leads.php?country=USA`
 - **Method:** `GET`
+
 #
-
-
