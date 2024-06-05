@@ -166,4 +166,3 @@ This project is a landing page for a media company called "Media Supreme". The l
 #
 
 
-https://www.youtube.com/watch?v=fwg_R1E84U4
