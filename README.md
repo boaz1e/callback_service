@@ -99,7 +99,7 @@ This project is a landing page for a media company called "Media Supreme". The l
    Open your browser and navigate to:
 
    ```
-   http://localhost/media_supreme_website/index.php
+   http://localhost/media_supreme_website/public/index.php
    ```
 
 3. **Accessing the BackOffice:**
@@ -107,7 +107,7 @@ This project is a landing page for a media company called "Media Supreme". The l
    Open your browser and navigate to:
 
    ```
-   http://localhost/media_supreme_website/backoffice.php
+   http://localhost/media_supreme_website/public/backoffice.php
    ```
 
    - Login with username: `admin` and password: `password`.
@@ -116,7 +116,7 @@ This project is a landing page for a media company called "Media Supreme". The l
 
 ### Add Lead to the Database
 
-- **URL:** `http://localhost/media_supreme_website/leads.php`
+- **URL:** `http://localhost/media_supreme_website/public/leads.php`
 - **Method:** `POST`
 - **Body:** (raw JSON)
 
@@ -133,12 +133,12 @@ This project is a landing page for a media company called "Media Supreme". The l
 
 ### Show Lead Details by ID
 
-- **URL:** `http://localhost/media_supreme_website/leads.php?lead_id=1`
+- **URL:** `http://localhost/media_supreme_website/pubic/leads.php?lead_id=1`
 - **Method:** `GET`
 
 ### Edit Lead by ID to Mark as "Called"
 
-- **URL:** `http://localhost/media_supreme_website/leads.php`
+- **URL:** `http://localhost/media_supreme_website/public/leads.php`
 - **Method:** `POST`
 - **Body:** (raw JSON)
 
@@ -151,17 +151,17 @@ This project is a landing page for a media company called "Media Supreme". The l
 
 ### Show All Leads that are "Called"
 
-- **URL:** `http://localhost/media_supreme_website/leads.php?filter=called`
+- **URL:** `http://localhost/media_supreme_website/public/leads.php?filter=called`
 - **Method:** `GET`
 
 ### Show Leads Created Today
 
-- **URL:** `http://localhost/media_supreme_website/leads.php?filter=today`
+- **URL:** `http://localhost/media_supreme_website/public/leads.php?filter=today`
 - **Method:** `GET`
 
 ### Show Leads by Country
 
-- **URL:** `http://localhost/media_supreme_website/leads.php?country=USA`
+- **URL:** `http://localhost/media_supreme_website/public/leads.php?country=USA`
 - **Method:** `GET`
 
 #
